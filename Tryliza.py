@@ -1,4 +1,5 @@
 import PySimpleGUI as sg
+
 import os
 def is_pos_empty(pos):
     if board[pos] != None:
@@ -163,7 +164,7 @@ board = {7:None,8:None,9:None,
         4:None,5:None,6:None,
         1:None,2:None,3:None}
 
-a = 1 #scale
+a = 3 #scale
 
 
 layout = [
@@ -192,7 +193,7 @@ line = graph.DrawLine((100*a, 0), (100*a, 300*a), width=5*a)  # HORIZONTAL LINE
 line = graph.DrawLine((200*a, 0), (200*a, 300*a), width=5*a)  # HORIZONTAL LINE
 line = graph.DrawLine((0, 100*a), (300*a, 100*a), width=5*a)  # VERTICAL LINE
 graph.DrawLine((0, 200*a), (300*a, 200*a), width=5*a)  # VERTICAL LINE
-print (window.ge())
+
 char ='X'
 X_points = 0
 O_points = 0
@@ -210,7 +211,8 @@ while True:
                 print('Won = ', won['wining_character'])
                 add_wining_line(board_cord[won['start_pos']],board_cord[won['end_pos']])
                 sg.popup_no_buttons(won['wining_character']+' won',no_titlebar = True,keep_on_top=True,auto_close=True,
-                auto_close_duration=3,font=('Arial Bold',11*a),background_color='Black')
+                auto_close_duration=3,font=('Arial Bold',11*a),background_color='Black',
+                location=(window.get_screen_size()[0]/2,window.get_screen_size()[1]/2))
                 
                 graph.Erase()
                 board = {7:None,8:None,9:None,4:None,5:None,6:None,1:None,2:None,3:None}
@@ -221,7 +223,8 @@ while True:
 
             elif (not any(value == None for value in board.values())):#Isopalia
                 sg.popup_no_buttons('Ισοπαλια',no_titlebar = True,keep_on_top=True,auto_close=True,
-                auto_close_duration=3,font=('Arial Bold',11*a),background_color='Black',grab_anywhere=True)
+                auto_close_duration=3,font=('Arial Bold',11*a),background_color='Black',grab_anywhere=True,
+                location=(window.get_screen_size()[0]/2,window.get_screen_size()[1]/2))
 
                 graph.Erase() # Clear
                 board = {7:None,8:None,9:None,4:None,5:None,6:None,1:None,2:None,3:None}
